@@ -11,6 +11,11 @@ export const usePokemonLudum = () => {
 
   const estPortat = computed(() => pokemons.value.length === 0);
 
+  const temerePokemon = computed(() => {
+    const temereIndex = Math.floor(Math.random() * pokemonOptiones.value.length);
+    return pokemonOptiones.value[temereIndex];
+  });
+
   const obtinePokemons = async (): Promise<Pokemon[]> => {
     const responsio = await pokemonApi.get<PokemonListaResponsio>('/?limit=151');
 
@@ -47,5 +52,6 @@ export const usePokemonLudum = () => {
     estPortat,
     pokemonOptiones,
     sequentiOptiones,
+    temerePokemon,
   };
 };
